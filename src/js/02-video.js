@@ -3,14 +3,11 @@ import throttle from 'lodash.throttle';
 
 const iframe = document.querySelector('#vimeo-player');
 const player = new Vimeo(iframe);
-const timeRecovery = JSON.parse(
-  localStorage.getItem('videoplayer-current-time')
-);
-
+const timeRecovery = localStorage.getItem('videoplayer-current-time');
 player.on('timeupdate', throttle(onPlayTime, 1000));
-player.setCurrentTime(timeRecovery);
+player.setCurrentTime(JSON.parse(timeRecovery));
 
 function onPlayTime(e) {
-  const currentTime = JSON.stringify(e.seconds);
-  localStorage.setItem('videoplayer-current-time', currentTime);
+  const currentTime = e.seconds;
+  localStorage.setItem('videoplayer-current-time', JSON.stringify(currentTime));
 }
