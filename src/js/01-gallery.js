@@ -16,7 +16,7 @@ galleryContainerEL.insertAdjacentHTML('beforeend', elementsOfGallery);
 galleryContainerEL.addEventListener('click', onOpenModal);
 
 const instance = new SimpleLightbox(`.gallery .gallery__item`, {
-  overlayOpacity: 1,
+  overlayOpacity: 0.6,
   captionsData: 'alt',
   captionDelay: 250,
 });
